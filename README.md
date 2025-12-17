@@ -87,47 +87,6 @@ HSET user:1 name "John Doe"
 SPUSH my_stack item1
 ```
 
-## Примеры использования
-
-### Работа с множествами
-```bash
-# Добавление элементов
-SADD users alice
-SADD users bob
-SADD users charlie
-
-# Проверка наличия
-SISMEMBER users alice  # Вернет: 1
-
-# Удаление элемента
-SREM users bob  # Вернет: 1
-```
-
-### Работа с хеш-таблицами
-```bash
-# Создание пользователя
-HSET user:1 name "Alice"
-HSET user:1 email "alice@example.com"
-HSET user:1 age "25"
-
-# Получение данных
-HGET user:1 name   # Вернет: Alice
-HGET user:1 email  # Вернет: alice@example.com
-```
-
-### Работа со стеками и очередями
-```bash
-# Стек (LIFO)
-SPUSH my_stack first
-SPUSH my_stack second
-SPOP my_stack  # Вернет: second
-
-# Очередь (FIFO)
-QPUSH my_queue first
-QPUSH my_queue second
-QPOP my_queue  # Вернет: first
-```
-
 ## Архитектура проекта
 
 ```
@@ -167,32 +126,6 @@ src/
 - Выполненные команды и их результаты
 - Операции сохранения/загрузки базы данных
 - Ошибки и предупреждения
-
-## Формат данных
-
-База данных сохраняется в JSON формате:
-```json
-{
-    "sets": {
-        "myset": ["value1", "value2"]
-    },
-    "stacks": {
-        "mystack": ["top", "middle", "bottom"]
-    },
-    "queues": {
-        "myqueue": ["first", "second", "third"]
-    },
-    "hashes": {
-        "user:1": {
-            "name": "Alice",
-            "email": "alice@example.com"
-        }
-    },
-    "trees": {
-        "mytree": ["root", "left", "null", "null", "right"]
-    }
-}
-```
 
 ## Безопасность и производительность
 
